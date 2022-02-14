@@ -71,6 +71,8 @@ FROM unique_titles
 GROUP BY unique_titles.title
 ORDER BY count DESC;
 
+SELECT * 
+FROM retiring_titles
 
 --D2
 --Retrieve the emp_no, first_name, last_name, and birth_date columns from the Employees table.
@@ -97,6 +99,7 @@ SELECT DISTINCT ON (emp_no) employees.emp_no,
 	titles.title
 INTO mentorship_eligibilty
 FROM employees
+
 --Join the Employees and the Department Employee tables on the primary key.
 --Join the Employees and the Titles tables on the primary key.
 --Join both tables on the primary key.
@@ -115,3 +118,12 @@ ORDER BY emp_no, emp_no DESC;
 SELECT *
 FROM mentorship_eligibility
 
+-- Added query for additional information
+SELECT COUNT(mentorship_eligibility.title), mentorship_eligibility.title
+INTO mentorship
+FROM mentorship_eligibility
+GROUP BY mentorship_eligibility.title
+ORDER BY count DESC;
+
+select *
+from mentorship
